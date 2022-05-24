@@ -4,7 +4,7 @@ import getMpesaCredentials from '../utilities/getMpesaCredentials.js';
 import getMpesaPassword from '../utilities/getMpesaPassword.js';
 
 export const deposit = async (req, res, next) => {
-  const { phone } = req.body;
+  const { phone, amount } = req.body;
   const { access_token } = await getMpesaCredentials();
 
   const data = {
@@ -12,13 +12,13 @@ export const deposit = async (req, res, next) => {
     Password: getMpesaPassword().password,
     Timestamp: getMpesaPassword().timestamp,
     TransactionType: 'CustomerPayBillOnline',
-    Amount: '1',
+    Amount: amount,
     PartyA: phone,
     PartyB: '174379',
     PhoneNumber: phone,
-    CallBackURL: `${envVars.API_URL}/api/client/mpesa-callback/deposit`,
-    AccountReference: 'MONARCH LTD',
-    TransactionDesc: 'MONARCH LTD',
+    CallBackURL: `https://296b-105-161-169-191.in.ngrok.io/api/client/mpesa-callback/deposit`,
+    AccountReference: 'MAYA000random',
+    TransactionDesc: 'MAYA COMPUTERS',
   };
 
   const config = {
@@ -34,8 +34,11 @@ export const deposit = async (req, res, next) => {
       config
     )
     .then(res => {
-      res.send({ res });
-      console.log(res);
+      res.send({ res, success: true});
+      console.log(res.body);
+      console.log('successfuly sent request')
+
+
     })
     .catch(error => {
       res.send(error);

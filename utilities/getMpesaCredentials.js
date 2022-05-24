@@ -19,9 +19,10 @@ const getMpesaCredentials = async () => {
     )
     .then(resp => {
       credential = resp.data;
+      console.log(credential);
     })
     .catch(error => {
-      console.log(error.message);
+      console.log(error);
     });
 
   return credential;
