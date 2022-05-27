@@ -16,7 +16,7 @@ export const deposit = async (req, res, next) => {
     PartyA: phone,
     PartyB: '174379',
     PhoneNumber: phone,
-    CallBackURL: `https://296b-105-161-169-191.in.ngrok.io/api/client/mpesa-callback/deposit`,
+    CallBackURL: `${envVars.API_URL}/api/client/mpesa-callback/deposit`,
     AccountReference: 'MAYA000random',
     TransactionDesc: 'MAYA COMPUTERS',
   };
@@ -26,7 +26,7 @@ export const deposit = async (req, res, next) => {
       Authorization: `Bearer ${access_token}`,
     },
   };
-
+  console.log(data)
   axios
     .post(
       'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest',

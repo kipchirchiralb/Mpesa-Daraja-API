@@ -18,4 +18,5 @@ const envVars = {
   API_URL,
 };
 
+
 export default envVars;

@@ -19,11 +19,19 @@ body {
 
 .form-signin {
   max-width: 330px;
+  margin: 0 auto;
   padding: 15px;
 }
 
 .form-signin .form-floating:focus-within {
   z-index: 2;
+}
+@media screen and (max-width: 576px) {
+  .form-signin{
+    max-width:80%;
+    height: 80%;
+    background-color: #982424
+  }
 }
 
 
@@ -37,23 +45,23 @@ body {
 </head>
 
 <body>
-  <main class="form-signin w-100 m-auto">
-    <form class="w-100">
+  <main class="form-signin w-100 mb-w" style="width:80%; ">
+    <form style="text-align: center;" action="/api/client/mpesa/deposit" method="post">
       <img class="mb-4" src="/images/darajalogo.png" alt="" width="250" height="70">
       <h1 class="h5 mb-3 fw-normal">Enter your number and the amount to test the API</h1>
   
       <div class="form-floating" id="number">
-        <input type="number" class="form-control" id="floatingInput" placeholder="254712345678" value="2547">
-        <label for="floatingInput">Phone Number (25412345678)</label>
+        <input type="number" class="form-control" id="floatingInput" placeholder="254712345678" value="2547" name="phone">
+        <label for="floatingInput" >Phone Number (25412345678)</label>
       </div>
       <div class="form-floating" id="amount">
-        <input type="number" class="form-control" id="floatingInput" placeholder="1" value="1">
-        <label for="floatingPassword">Amount</label>
+        <input type="number" class="form-control" id="floatingInput" placeholder="1" value="1" name="amount">
+        <label for="floatingPassword" >Amount</label>
       </div>
   
       <div class=" mb-3">
         <label>
-           Ensure to provide a tunnel to expose you app to the internet
+           Ensure to provide a tunnel to expose you app to the internet through enviroment variables if you are testing this on your local machine.
         </label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">SEND</button>
